@@ -2074,8 +2074,8 @@ class Edge {
             line.material.dispose();
             line.geometry.dispose();
             const cone = this.#group.getObjectByName('cone');
-            cone.material?.dispose();
-            cone.material?.dispose();
+            cone?.material.dispose();
+            cone?.material.dispose();
             const options = this.options;
             let fn = null;
             if (val && !this.#arrow) fn = LineHelper.generateArrow;

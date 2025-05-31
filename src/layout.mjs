@@ -977,8 +977,8 @@ class Edge {
       line.geometry.dispose();
 
       const cone = this.#group.getObjectByName('cone');
-      cone.material?.dispose();
-      cone.material?.dispose();
+      cone?.material.dispose();
+      cone?.material.dispose();
 
       const options = this.options;
 

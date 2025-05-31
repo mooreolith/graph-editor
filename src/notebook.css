@@ -1,0 +1,210 @@
+:root {
+  --ui-color: rgb(38, 78, 152);
+  --ui-bg-color: white;
+  --nb-width: 300px;
+}
+
+.menu {
+  border-right: 1px solid black;
+}
+
+.notebook {
+  display: flex;
+  flex-direction: column;
+  border-left: none;
+  background-image: url('./img/spiral-small.png');
+  background-repeat: repeat-y;
+  background-position: -1px -2px;
+  background-size: 57px;
+}
+
+.notebook-inner {
+  border: 1px solid black;
+  border-left: none;
+  margin-left: 20px;
+}
+
+.notebook.minimized {
+  display: none;
+}
+
+.notebook-buttons {
+  margin-top: 5px;
+  margin-left: 50px;
+  margin-bottom: 15px;
+
+}
+
+.notebook-button {
+  border: 0;
+  background-color: var(--ui-bg-color);
+  color: var(--ui-color);
+}
+
+.notebook-button:hover {
+  background-color: var(--ui-color);
+  color: var(--ui-bg-color);
+}
+
+
+.title {
+  border: 0;
+  outline: none;
+  border-bottom: 1px solid black;
+  color: var(--ui-color);
+}
+
+.title:focus {
+  border: 0;
+  outline: none;
+  border-bottom: 1px solid black;
+}
+
+.title::selection {
+  background-color: var(--ui-color);
+  color: var(--ui-bg-color);
+} 
+
+.cells {
+  margin-left: 50px;
+  padding-left: 0;
+  margin-top: 10px;
+  margin-left: 50px;
+}
+
+.cell-types {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.cell-buttons {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  justify-content: right;
+}
+
+.cell-button {
+  border: 0;
+  background-color: var(--ui-bg-color);
+  color: var(--ui-color);
+}
+
+.cell-button:hover {
+  background-color: var(--ui-color);
+  color: var(--ui-bg-color);
+}
+
+.log {
+  margin: 0;
+  padding-left: 25px;
+}
+
+.error {
+  color: red;
+}
+
+.title {
+  margin-left: 50px;
+}
+
+/* output */
+output.messages:empty,
+output.output:empty {
+  display: none;
+}
+
+output.messages > .log {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+output.messages,
+output.output {
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+output.output {
+  margin-top: 15px;
+}
+
+.cells {
+  margin-left: 50px;
+  padding-left: 0;
+  background-color: var(--ui-bg-color);
+}
+
+.title {
+  margin-bottom: 0;
+}
+
+.cells {
+  margin-top: 0;
+}
+
+.cell {
+  margin-top: 25px;
+}
+
+.app-buttons {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  align-items: center;
+}
+
+.app-buttons > label:first-child {
+  margin-right: 25px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.app-button {
+  border: 0;
+  background-color: var(--ui-bg-color);
+  color: var(--ui-color);
+}
+
+.app-button:hover {
+  background-color: var(--ui-color);
+  color: var(--ui-bg-color);
+}
+
+.app-button.minimize {
+  margin-left: 25px;
+}
+
+.app-button.run-all {
+  margin-right: 25px;
+}
+
+.cell {
+  border-bottom: 1px solid gray;
+}
+
+@media screen and (min-width: 800px){
+  /* notebook */
+  main {
+    width: var(--nb-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (max-width: 800px){
+  /* notebook */
+  main {
+    width: calc(min(100%, var(--nb-width)));
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Vertices and Edges</title>
+
+    <link rel="stylesheet" href="./notebook.css">
+    <link rel="stylesheet" href="./graph-app.css">
+
+    <script type="importmap">  {
+      "imports": {
+        "@codemirror/commands": "../node_modules/@codemirror/commands/dist/index.js",
+        "@codemirror/lang-javascript": "../node_modules/@codemirror/lang-javascript/dist/index.js",
+        "@codemirror/lang-markdown": "../node_modules/@codemirror/lang-markdown/dist/index.js",
+        "@codemirror/state": "../node_modules/@codemirror/state/dist/index.js",
+        "@codemirror/view": "../node_modules/@codemirror/view/dist/index.js",
+        "codemirror": "../node_modules/codemirror/dist/index.js",
+        "marked": "../node_modules/marked/lib/marked.esm.js",
+        "three": "../node_modules/three/build/three.module.js",
+        "OrbitControls": "../node_modules/three/examples/jsm/controls/OrbitControls.js",
+        "SelectionBox": "../node_modules/three/examples/jsm/interactive/SelectionBox.js",
+        "SelectionHelper": "../node_modules/three/examples/jsm/interactive/SelectionHelper.js"
+      },
+      "scopes": {
+        "/": {
+          "@codemirror/autocomplete": "../node_modules/@codemirror/autocomplete/dist/index.js",
+          "@codemirror/lang-css": "../node_modules/@codemirror/lang-css/dist/index.js",
+          "@codemirror/lang-html": "../node_modules/@codemirror/lang-html/dist/index.js",
+          "@codemirror/language": "../node_modules/@codemirror/language/dist/index.js",
+          "@codemirror/lint": "../node_modules/@codemirror/lint/dist/index.js",
+          "@codemirror/search": "../node_modules/@codemirror/search/dist/index.js",
+          "@lezer/common": "../node_modules/@lezer/common/dist/index.js",
+          "@lezer/css": "../node_modules/@lezer/css/dist/index.js",
+          "@lezer/highlight": "../node_modules/@lezer/highlight/dist/index.js",
+          "@lezer/html": "../node_modules/@lezer/html/dist/index.js",
+          "@lezer/javascript": "../node_modules/@lezer/javascript/dist/index.js",
+          "@lezer/lr": "../node_modules/@lezer/lr/dist/index.js",
+          "@lezer/markdown": "../node_modules/@lezer/markdown/dist/index.js",
+          "@marijn/find-cluster-break": "../node_modules/@marijn/find-cluster-break/src/index.js",
+          "crelt": "../node_modules/crelt/index.js",
+          "style-mod": "../node_modules/style-mod/src/style-mod.js",
+          "w3c-keyname": "../node_modules/w3c-keyname/index.js"
+        }
+      }
+    }
+    </script>
+  </head>
+  <body>
+    
+    <main class="main content">
+    </main>
+    
+    <nav id="menu">
+      <ol class="menu">
+        <li class="menu-item" onclick="window.location = './examples/';">Examples</li>
+
+        <li class="toggle-blank-1">&nbsp;</li>
+        <ol id="blank-menu-1" class="toggleable">
+          <li class="menu-item">&nbsp;</li>
+        </ol>
+
+        <li id="toggle-notebook-menu" class="toggle">Notebook</li>
+        <ol id="notebook-menu" class="toggleable active">
+          <li class="menu-item" id="open-notebook-new">New</li>
+          <li class="menu-item" id="open-notebook-browser">from Browser</li>
+          <li class="menu-item" id="open-notebook-file">from File</li>
+          <li class="menu-item" id="open-notebook-url">from URL</li>
+          <li class="menu-item" id="save-notebook-browser">to Browser</li>
+          <li class="menu-item" id="save-notebook-file">to File</li>
+          <li class="menu-item" id="save-notebook-url">to URL</li>
+        </ol>
+
+        <li id="toggle-graph-menu" class="toggle">Graph</li>
+        <ol id="graph-menu" class="toggleable">
+          <li class="menu-item" id="open-graph-new">New</li>
+          <li class="menu-item" id="open-graph-browser">from Browser</li>
+          <li class="menu-item" id="open-graph-file">from File</li>
+          <li class="menu-item" id="open-graph-url">from URL</li>
+          <li class="menu-item" id="save-graph-browser">to Browser</li>
+          <li class="menu-item" id="save-graph-file">to File</li>
+          <li class="menu-item" id="save-graph-url">to URL</li>
+        </ol>
+
+        <li id="toggle-vertex-menu" class="toggle">Edit</li>
+        <ol id="vertex-menu" class="toggleable">
+          <li class="menu-item" id="vertices-add">New</li>
+          <li class="menu-item" id="vertices-neighbor">New Neighbor</li>
+          <li class="menu-item" id="vertices-select-all">Select All</li>
+          <li class="menu-item" id="vertices-remove">Remove</li>
+          <li class="menu-item" id="vertices-connect">Connect</li>
+          <li class="menu-item" id="vertices-cut">Cut</li>
+          <li class="menu-item" id="vertices-copy">Copy</li>
+          <li class="menu-item" id="vertices-paste">Paste</li>
+          <hr>
+          <li class="menu-item" id="vertex-color-item">
+            <label for="vertex-color">Color: </label>
+            <input id="vertex-color" type="color" />
+          </li>
+
+          <li class="menu-item" id="vertex-texture-item">
+            <label for="vertex-texture">Texture: </label>
+            <input id="vertex-texture" type="file" />
+          </li>
+
+          <li class="menu-item" id="vertex-selection-color-item">
+            <label for="vertex-selection-color">Selection Color: </label>
+            <input id="vertex-selection-color" type="color" />
+          </li>
+      
+          <li class="menu-item" id="vertex-size-item">
+            <label for="vertex-size">Size: </label>
+            <input id="vertex-size" type="range" min="-1.0" max="10.0" step="0.25" />
+          </li>
+
+          <li class="menu-item" id="vertex-label-item">
+            <label for="vertex-label">Label: </label>
+            <input id="vertex-label" type="text" />
+          </li>
+
+          <li class="menu-item" id="vertex-visible-item">
+            <label for="vertex-visible">Visible: </label>
+            <input id="vertex-visible" type="checkbox" />     
+          </li>
+        </ol>
+
+        <li id="toggle-constants-menu" class="toggle">Constants</li>
+        <ol id="constants-menu" class="toggleable">
+          <li class="menu-item" id="constants-K-item">
+            <label for="constants-K" title="Spring constant: More K, more attraction">Attraction: <output id="constants-K"></output></label>
+            <input class="base" type="range" min="-1.0" max="10.0" step="0.01" />
+            <input class="exp" type="range" min="-10" max="10" step="1">
+          </li>
+
+          <li class="menu-item" id="constants-f0-item">
+            <label for="constants-f0" title="Repulsion constant: More f0, more repulsion">Repulsion: <output id="constants-f0"></output></label>
+            <input class="base" type="range" min="-1.0" max="1.0" step="0.1" />
+            <input class="exp" type="range" min="-10" max="10" step="1" />
+          </li>
+
+          <li class="menu-item" id="constants-dt-item">
+            <label for="constants-dt" title="Time step: More dt, faster simulation">Time Step: <output id="constants-dt"></output></label>
+            <input class="base" type="range" min="-1.0" max="1.0" step="0.1" />
+            <input class="exp" type="range" min="-10" max="10" step="1" />
+          </li>
+
+          <li class="menu-item" id="constants-D-item">
+            <label for="constants-D" title="Damping constant: More D, more damping">Damping: <output id="constants-D"></output></label>
+            <input class="base" type="range" min="-1.0" max="1.0" step="0.1" />
+            <input class="exp" type="range" min="-10" max="10" step="1" />
+          </li>
+
+          <li class="menu-item" id="constants-epsilon-item">
+            <label for="constants-epsilon" title="Minimum distance: to avoid division by zero">Epsilon: <output id="constants-epsilon"></output></label>
+            <input class="base" type="range" min="-1.0" max="1.0" step="0.1" />
+            <input class="exp" type="range" min="-10" max="10" step="1" />
+          </li>
+
+          <li class="menu-item" id="constants-theta-item">
+            <label for="constants-theta" title="Theta: More theta, less accuracy and more speed">Theta: <output id="constants-theta"></output></label>
+            <input class="base" type="range" min="-1.0" max="1.0" step="0.1" />
+            <input class="exp" type="range" min="-10" max="10" step="1" />
+          </li>
+
+          <li class="menu-item" id="constants-inner-distance-item">
+            <label for="constants-inner-distance" title="Inner distance: Used by the Barnes-Hut-Tree to determine proximity">Inner Distance: <output id="constants-inner-distance"></output></label>
+            <input class="base" type="range" min="-1.0" max="1.0" step="0.1" />
+            <input class="exp" type="range" min="-10" max="10" step="1" />
+          </li>
+        </ol>
+
+        <li class="toggle-blank-2">&nbsp;</li>
+        <ol id="blank-menu-2" class="toggleable">
+          <li class="menu-item">&nbsp;</li>
+        </ol>
+      </ol>
+    </nav>
+
+    <div id="notebook-container"></div>
+
+    <input id="upload" type="file" />
+    <a id="download"></a>
+
+    <script type="module" src="./graph-app.mjs"></script>
+  </body>
+</html>

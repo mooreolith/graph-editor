@@ -1,0 +1,185 @@
+:root {
+  --ui-color: rgb(38, 78, 152);
+  --ui-bg-color: white;
+
+  --ui-hover-color: white;
+  --ui-hover-bg-color: rgb(38, 78, 152);
+
+  --ui-font-size: 1.25rem;
+  --nb-width: 725px;
+}
+
+html, body {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  height: 100%;
+}
+
+main {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  color: var(--ui-color);
+  margin-left: 25px;
+  font-size: var(--ui-font-size);
+}
+
+#notebook-container {
+  position: fixed;
+  right: 0;
+  top: 0;
+  margin-right: 25px;
+  width: var(--nb-width);
+  overflow-y: auto;
+  max-height: 100%;
+  resize: horizontal;
+  transform: rotateY(180deg);
+  overflow-x: hidden;
+}
+
+.notebook {
+  transform: rotateY(180deg);
+}
+
+.app-buttons {
+  transform: rotateY(180deg);
+}
+
+.cell-types {
+  color: var(--ui-color);
+}
+
+nav > ol, nav > ol > ol {
+  list-style: none;
+  list-style-position: outside;
+  padding-left: 0;
+  display: block;
+}
+
+.togglable {
+  width: 125px;
+}
+
+ol {
+  margin-bottom: 25px;
+}
+
+.toggleable:not(.active) {
+  display: none;
+}
+
+li.menu-item,
+li.toggle,
+li.solo {
+  background-color: rgba(0, 0, 0, 0.0);
+  color: var(--ui-color);
+}
+
+li.menu-item:hover,
+li.toggle:hover,
+li.solo:hover {
+  background-color: var(--ui-color);
+  color: var(--ui-bg-color);
+}
+
+graph-html#graph {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}
+
+.toggle {
+  border-top: 1px dashed var(--ui-color);
+  border-bottom: 1px dashed var(--ui-color);
+}
+
+.toggleable {
+  margin-top: 5px;
+}
+
+fieldset#vertex-context-menu:not(.active) {
+  display: none;
+  position: absolute;
+  color: var(--ui-color);
+}
+
+fieldset#vertex-context-menu.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 350px;
+  height: calc(max-content);
+  z-index: 1;
+}
+
+fieldset {
+  border: 1px dotted var(--ui-color);
+  color: var(--ui-color);
+}
+
+fieldset > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+legend {
+  border: 1px dotted var(--ui-color);
+  color: var(--ui-color);
+}
+
+#vertex-menu > li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#constants-menu > li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#vertex-label {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  color: var(--ui-color);
+  background-color: rgba(0, 0, 0, 0.0);
+  border-bottom: 1px solid var(--ui-color);
+  width: 100%;
+  outline: none;
+  font-size: var(--ui-font-size);
+}
+
+#vertex-label:hover {
+  border-bottom: 1px solid black;
+  color: black;
+  outline: none;
+}
+
+a#download {
+  display: none;
+}
+
+input#upload {
+  display: none;
+}
+
+.selectBox {
+  border: 1px solid #55aaff;
+  background-color: rgba(75, 160, 255, 0.3);
+  position: fixed;
+}

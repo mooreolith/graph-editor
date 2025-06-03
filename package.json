@@ -1,7 +1,7 @@
 {
   "name": "local.verticesandedges.net",
   "version": "1.0.0",
-  "description": "A 3D dynamic graph visualization heavily inspired by 'Dynamic Multilevel Graph Visualization (2007)'",
+  "description": "A javascript (threejs/webgl) 3D dynamic graph visualization heavily inspired by 'Dynamic Multilevel Graph Visualization (2007)'",
   "scripts": {
     "build:local": "npm run clean && parcel build src/index.html --public-url / --dist-dir docs/ && npm run copy:all",
     "watch:local": "npm run clean && parcel watch src/index.html --public-url / --dist-dir docs/",
@@ -9,7 +9,7 @@
     "build:apps": "npm run clean && parcel build src/index.html --public-url /graph-editor/ --dist-dir docs/ && npm run copy:all",
     "deploy:apps": "npm run build:apps && rm -rf /var/www/html/apps.verticesandedges.net/graph-editor/* && cp ./docs/* /var/www/html/apps.verticesandedges.net/graph-editor/. -rf",
     "build:github": "npm run clean && parcel build src/index.html --public-url /graph-editor/ --dist-dir docs/ && npm run copy:all",
-    "deploy:github": "npm run build:github && git add . && git commit -m \"$(date)\" && git push github main && git push graph-app main",
+    "deploy:github": "npm run build:github && git add . && git commit -m \"$(date)\" && git push github main",
     "watch": "parcel watch src/index.html --public-url / --dist-dir docs/",
     "clean": "rm -rf docs/* && rm -rf .parcel-cache/",
     "copy:all": "npm run copy:examples",

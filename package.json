@@ -6,9 +6,9 @@
     "build:local": "npm run clean && parcel build src/index.html --public-url / --dist-dir docs/ && npm run copy:all",
     "watch:local": "npm run clean && parcel watch src/index.html --public-url / --dist-dir docs/",
     "start:local": "http-server docs/",
-    "build:apps": "npm run clean && parcel build src/index.html --public-url /editor/ --dist-dir docs/ && npm run copy:all",
-    "deploy:apps": "npm run build:apps && rm -rf /var/www/html/apps.verticesandedges.net/editor/* && cp ./docs/* /var/www/html/apps.verticesandedges.net/editor/. -rf",
-    "build:github": "npm run clean && parcel build src/index.html --public-url /graph-app/ --dist-dir docs/ && npm run copy:all",
+    "build:apps": "npm run clean && parcel build src/index.html --public-url /graph-editor/ --dist-dir docs/ && npm run copy:all",
+    "deploy:apps": "npm run build:apps && rm -rf /var/www/html/apps.verticesandedges.net/graph-editor/* && cp ./docs/* /var/www/html/apps.verticesandedges.net/graph-editor/. -rf",
+    "build:github": "npm run clean && parcel build src/index.html --public-url /graph-editor/ --dist-dir docs/ && npm run copy:all",
     "deploy:github": "npm run build:github && git add . && git commit -m \"$(date)\" && git push github main && git push graph-app main",
     "watch": "parcel watch src/index.html --public-url / --dist-dir docs/",
     "clean": "rm -rf docs/* && rm -rf .parcel-cache/",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mooreolith/editor.git"
+    "url": "git+https://github.com/mooreolith/graph-editor.git"
   },
   "keywords": [
     "dynamic",
@@ -28,9 +28,9 @@
   "author": "Joshua M. Moore <mooreolith@gmail.com>",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/mooreolith/editor/issues"
+    "url": "https://github.com/mooreolith/graph-editor/issues"
   },
-  "homepage": "https://github.com/mooreolith/editor#readme",
+  "homepage": "https://github.com/mooreolith/graph-editor#readme",
   "dependencies": {
     "@codemirror/commands": "^6.8.1",
     "@codemirror/lang-javascript": "^6.2.3",

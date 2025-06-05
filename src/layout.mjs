@@ -52,7 +52,6 @@ const wait = async function(delay){
   return new Promise((resolve, reject) => setTimeout(resolve, delay));
 }
 
-let _lineGeometry, _coneGeometry;
 /**
  * An 3D arrow object for visualizing directions.
  *
@@ -97,8 +96,8 @@ class ArrowHelper extends three.Object3D {
 
     _lineGeometry = new LineGeometry();
     _lineGeometry.setFromPoints([origin.clone(), end]);
-    _coneGeometry = new three.CylinderGeometry( 0, 0.5, 1, 5, 1 );
-    _coneGeometry.translate( 0, -0.5, 0 );
+    _coneGeometry = new three.CylinderGeometry( 0, 0.2, 0.7 );
+    _coneGeometry.translate( 0, -1.0, 0 );
 
     this.position.copy( origin );
 
@@ -240,9 +239,9 @@ class LineHelper {
     line.name = 'line';
 
     // create cone
-    // const coneGeo = new three.CylinderGeometry(0, 0.5, 1, 5, 1 );
-    const coneGeo = new three.ConeGeometry(0.5, 2, 5, 1);
-    coneGeo.translate( 0, -0.5, 0 );
+    // const coneGeo = new three.CylinderGeometry(0, 0.5, 1);
+    const coneGeo = new three.CylinderGeometry( 0, 0.2, 0.7);
+    coneGeo.translate( 0, -1.0, 0 );
     coneGeo.rotateX(- Math.PI / 2);
     const coneMat = new three.MeshBasicMaterial({
       color: options.color,
